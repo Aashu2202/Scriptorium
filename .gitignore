@@ -1,0 +1,23 @@
+# Node.js ignore
+node_modules/
+npm-debug.log
+package-lock.json
+
+# React ignore
+build/
+public/build/
+public/static/
+public/favicon.ico
+public/manifest.json
+src/reportWebVitals.js
+
+# General ignore
+.DS_Store
+.env
+.idea/
+.vscode/
+
+# OS ignore
+Thumbs.db
+ehthumbs.db
+Desktop.ini
