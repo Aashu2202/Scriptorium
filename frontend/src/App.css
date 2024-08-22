@@ -17,7 +17,7 @@
   --greycolor: #b0bac7;
 }
 
-@font-face{
+/* @font-face{
   font-family: "bold";
   src: url(./assets/font/BrunoAce-Regular.ttf);
   font-weight: 900;
@@ -41,7 +41,7 @@
   font-family: "light";
   src: url(./assets/font/BrunoAce-Regular.ttf);
   font-weight: 900;
-}
+} */
 
 h1 {
   font-family: "bold";
