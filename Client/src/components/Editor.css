@@ -1,0 +1,86 @@
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+
+.editor-header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.language-select {
+    width: 120px;
+    background-color: #2D2D2D;
+    color: white;
+    border: 1px solid #4B4B4B;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+textarea#realtimeEditor {
+    width: 100%;
+    height: calc(100% - 40px); /* Adjust the height based on the editor header */
+    font-size: 16px;
+    line-height: 1.5;
+    padding-top: 40px; /* Add padding to avoid overlap with the header */
+    resize: none; /* Disable manual resizing */
+}
+
+.cm-s-ambiance.CodeMirror {
+    height: 100%; /* Ensure CodeMirror takes full height available */
+}
+
+.control-panel {
+    background-color: #2D2D2D;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 30%; /* Initial height */
+    min-height: 100px; /* Minimum height */
+    max-height: 80%; /* Maximum height */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0; /* No margin */
+    overflow: hidden;
+}
+
+.resizer {
+    height: 10px;
+    background: #555;
+    cursor: ns-resize;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+}
+
+.run-button {
+    background-color: #28A745;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.output-field, 
+#input {
+    background-color: #1E1E1E;
+    color: white;
+    border: 1px solid #4B4B4B;
+    padding: 10px;
+    border-radius: 5px;
+    height: 100%;
+    resize: none; /* Disable manual resizing */
+}
