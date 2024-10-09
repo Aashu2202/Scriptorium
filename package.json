@@ -1,0 +1,17 @@
+{
+    "name": "scriptonium",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "build": "npm run build-client && npm run build-server",
+      "build-client": "cd Client && npm install && npm run build",
+      "build-server": "cd Server && npm install",
+      "start": "concurrently \"npm run start-client\" \"npm run start-server\"",
+      "start-client": "cd Client && npm start",
+      "start-server": "cd Server && npm run server:prod"
+    },
+    "devDependencies": {
+      "concurrently": "^7.0.0"
+    }
+  }
+  
