@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyP.json());
 
 // Static Files Middleware
-app.use(express.static(path.join(__dirname, '../Client/build', 'index.html')));
+app.use(express.static(path.join(__dirname, '../Client/build')));
 
 // Socket.io setup
 const server = http.createServer(app);
