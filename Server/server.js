@@ -2,31 +2,34 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-const path = require('path');
 const bodyP = require('body-parser');
 
 // Initialize Express app
 const app = express();
 
 // Middleware
-app.use(cors());
 app.use(bodyP.json());
 
-// Static Files Middleware
-app.use(express.static(path.join(__dirname, '../Client/build')));
+// CORS settings (allow only the frontend's deployed URL)
+const allowedOrigins = ['http://localhost:3000/'];
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true,  // if you're using cookies for session handling
+}));
 
 // Socket.io setup
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ['GET', 'POST']
+  }
+});
 
 // Routes
 const codeRoutes = require('./routes/codeRoutes');
 app.use('/api', codeRoutes);
-
-// Serve React App
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
 
 // Socket.io logic
 const listOfUser = {};
@@ -80,4 +83,3 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server started on PORT: ${PORT}`);
 });
-
