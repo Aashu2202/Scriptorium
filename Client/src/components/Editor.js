@@ -69,7 +69,7 @@ const Editor = ({ socketref, roomId, onCode }) => {
             option === "Cpp" || option === "C" ? "text/x-c++src" : "javascript";
         editorRef.current.setOption("mode", mode);
     };
-
+const URL = process.env.REACT_APP_BACKEND_URL+"/api/Collaborate";
     const getData = async () => {
         try {
             const code = {
@@ -77,12 +77,12 @@ const Editor = ({ socketref, roomId, onCode }) => {
                 input: document.getElementById('input').value,
                 lang: document.getElementById("option").value,
             };
-            const resp = await axios.post("http://localhost:5000/api/Collaborate", code);
+            const resp = await axios.post(URL, code);
     
             if (resp.data.error) {
-                setOutputData(resp.data.error);  // Display error if present
+                setOutputData(resp.data.error);  
             } else {
-                setOutputData(resp.data.output); // Display output on successful compilation
+                setOutputData(resp.data.output); 
             }
         } catch (error) {
             console.error('Error during compilation:', error);

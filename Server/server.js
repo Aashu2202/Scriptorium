@@ -3,6 +3,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const bodyP = require('body-parser');
+require('dotenv').config()
 
 // Initialize Express app
 const app = express();
@@ -11,7 +12,7 @@ const app = express();
 app.use(bodyP.json());
 
 // CORS settings (allow only the frontend's deployed URL)
-const allowedOrigins = ['http://localhost:3000/'];
+const allowedOrigins = [process.env.FRONTEND_URL_ENDPOINT];
 app.use(cors({
   origin: allowedOrigins,
   methods: ['GET', 'POST'],
@@ -29,6 +30,7 @@ const io = new Server(server, {
 
 // Routes
 const codeRoutes = require('./routes/codeRoutes');
+const { log } = require('console');
 app.use('/api', codeRoutes);
 
 // Socket.io logic
